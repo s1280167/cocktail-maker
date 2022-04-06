@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # home-page
 
 ## Project setup
@@ -28,3 +29,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 >>>>>>> origin/main
 # make README.md
 # cocktail-maker
+=======
+# cocktail-maker
+>>>>>>> origin/main
