@@ -1,7 +1,10 @@
+
 <template>
-    <div id="top">
+    <div id="test">
         <div>
-            <!--  <MainTitle />  -->
+            <!-- <transition name="fadeTitle" @after-enter="changeShow()" appear> 
+                <h1 v-show="showTitle" class="main-title">Cocktail Maker</h1>
+             </transition> -->
             <div class="top-routers">
                 <router-link class="top-router top-router1" to="/addition">{{'登録'}}</router-link>
                 <router-link class="top-router" to="/addition">{{'登録'}}</router-link>
@@ -13,38 +16,42 @@
 </template>
 
 <script>
-    // import MainTitle from "../components/MainTitle.vue";
     export default {
-        data() {
-            return {
-                
-            };
-        },
-        components: {
-            // MainTitle,
-        },
+
     };
 </script>
 
-<style>
-    #top{
+<style scoped>
+
+    /* ----- Titleのフェードアウト ----- */
+    .fadeTitle-leave-active{
+        transition: opacity 5s;
+    }
+    .fadeTitle-leave-to {
+        opacity: 0;
+    }
+    /* ----- Routersのフェードイン ----- */
+
+    
+    /*  */
+    #test{
         position: relative;
         top: 0;
         height: 81.75vh;
         padding: 10% 25% 0;
-        background-image: linear-gradient(#e6f0f0, #c9ffbf, #ffafbd);
+        background-image: linear-gradient(#e6f0f0, #a1f4ff, #7c539d);
         background-size: cover;
     }
     .top-routers{
         height: 100%;
         width: 100%;
-        margin-top: 200px;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr; /* 幅3等分 */
         grid-template-rows: 1fr 1fr 1fr;
         grid-gap: 50px;
         text-align: center;
         align-items: center;
+        z-index: 3;
     }
     .top-router{
         color: #ffffff;
@@ -63,7 +70,7 @@
 
     /* ---------- モバイル ---------- */
     @media (max-width: 600px) {
-        #top{
+        #test{
             padding: 45% 7.5% 0;
         }
         .top-routers{
