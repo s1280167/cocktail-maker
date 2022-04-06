@@ -25,8 +25,6 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 =======
-# home-page
->>>>>>> origin/main
 # make README.md
 # cocktail-maker
 =======
