@@ -6,10 +6,10 @@
                 <h1 v-show="showTitle" class="main-title">Cocktail Maker</h1>
              </transition> -->
             <div class="top-routers">
-                <router-link class="top-router top-router1" to="/addition">{{'登録'}}</router-link>
-                <router-link class="top-router" to="/addition">{{'登録'}}</router-link>
-                <router-link class="top-router" to="/test">{{'テスト'}}</router-link>
-                <router-link class="top-router" to="/list">{{'リスト'}}</router-link>
+                <router-link class="top-router top-router1" to="/cocktail-maker/addition">{{'登録'}}</router-link>
+                <router-link class="top-router" to="/cocktail-maker/addition">{{'登録'}}</router-link>
+                <router-link class="top-router" to="/cocktail-maker/test">{{'テスト'}}</router-link>
+                <router-link class="top-router" to="/cocktail-maker/list">{{'リスト'}}</router-link>
             </div>
         </div>
    </div>
