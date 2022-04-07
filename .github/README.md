@@ -1,6 +1,4 @@
 <<<<<<< HEAD
-<<<<<<< HEAD
-# home-page
 
 ## Project setup
 ```
@@ -26,7 +24,5 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 =======
 # make README.md
-# cocktail-maker
-=======
 # cocktail-maker
 >>>>>>> origin/main
