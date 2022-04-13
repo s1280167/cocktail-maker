@@ -7,12 +7,12 @@
             <br>
             <span v-show="obj.mainDetail" class="thin">
                 【 Base 】 {{obj.baseName}}{{obj.baseQuantity}}<br>
-                <span v-show="obj.showMixer" class="thin">
-                    【 Mixer 】 {{obj.mixerName}}{{obj.mixerQuantity}}<br>
-                    <span v-show="obj.showMixer2" class="thin">
-                        【 Mixer2 】 {{obj.mixer2Name}}{{obj.mixer2Quantity}}
+                <span v-show="obj.showAlcohol" class="thin">
+                    【 Alcohol 】 {{obj.alcoholName}}{{obj.alcoholQuantity}}<br>
+                    <span v-show="obj.showMixer" class="thin">
+                        【 Mixer 】 {{obj.mixerName}}{{obj.mixerQuantity}}<br>
                     </span>
-                </span>                
+                </span>
             </span>
         </li>            
     </ul>
@@ -24,16 +24,17 @@
         data() {
             return {                
                 selected: 0,
+                
             };
         },
         methods: {
             showDetail(obj) {
+                if(obj.alcoholName != "unselected") {
+                    obj.showAlcohol = true;
+                }
                 if(obj.mixerName != "unselected") {
-                    if(obj.mixer2Name != "unselected") {
-                        obj.showMixer2 = true;
-                    }
                     obj.showMixer = true;
-                 }
+                }
                 obj.mainDetail = !obj.mainDetail;
             },
             deleteCocktail(selected) {

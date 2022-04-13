@@ -10,9 +10,9 @@ Vue.use(Router);
 export default new Router({
     mode: "history",
     routes: [
-        {path: '/cocktail-maker/', component: Top},
-        {path: '/cocktail-maker/addition', component: Addition},
-        {path: '/cocktail-maker/test', component: Test},
-        {path: '/cocktail-maker/list', component: List},
+        {path: '/', component: Top},
+        {path: '/addition', component: Addition},
+        {path: '/test', component: Test},
+        {path: '/list', component: List},
     ],
 });
