@@ -6,68 +6,12 @@
                 <span>カクテル名</span>
                 <input id="cocktailName" type="text" required>
             </label>
+            <BaseAddition />
+            <AlcoholAddition />
+            <MixerAddition />
             <label>
-                <span>ベース</span>
-                <select name="base-name">
-                    <option value="non-alcohol" selected>未選択</option>
-                    <option value="gin - ">ジン</option>
-                    <option value="rum - ">ラム</option>
-                    <option value="beer - ">ビール</option>
-                    <option value="vodka - ">ウォッカ</option>
-                    <option value="tequila - ">テキーラ</option>
-                    <option value="brandy - ">ブランデー</option>
-                    <option value="whiskey - ">ウィスキー</option>
-                    <option value="wine - ">ワイン</option>
-                    <option value="liqueur - ">リキュール</option>             
-                </select>
-                <select name="base-quantity">
-                    <option value="" selected>未選択</option>
-                    <option value="30mL">30mL</option>
-                    <option value="45mL">45mL</option>
-                    <option value="60mL">60mL</option>                    
-                </select>
-            </label>
-            <label>
-                <span>割り材</span>
-                <select name="mixer-name">
-                    <option value="unselected" selected>未選択</option>
-                    <option value="milk - ">牛乳</option>
-                    <option value="soda - ">炭酸水</option>
-                    <option value="oolong - ">烏龍茶</option>
-                    <option value="coke - ">コーラ</option>
-                    <option value="ginger - ">ジンジャエール</option>
-                    <option value="orange - ">オレンジジュース</option>
-                    <option value="apple - ">アップルジュース</option>
-                    <option value="pine - ">パイナップルジュース</option>
-                </select>
-                <select name="mixer-quantity">
-                    <option value="unselected" selected>未選択</option>
-                    <option value="30mL">30mL</option>
-                    <option value="45mL">45mL</option>
-                    <option value="60mL">60mL</option>
-                </select>
-            </label>
-            <label>
-                <span>割り材</span>
-                <select name="mixer2-name">
-                    <option value="unselected" selected>未選択</option>
-                    <option value="milk - ">牛乳</option>
-                    <option value="soda - ">炭酸水</option>
-                    <option value="oolong - ">烏龍茶</option>
-                    <option value="coke - ">コーラ</option>
-                    <option value="ginger - ">ジンジャエール</option>
-                    <option value="orange - ">オレンジジュース</option>
-                    <option value="apple - ">アップルジュース</option>
-                    <option value="pine - ">パイナップルジュース</option>
-                </select>
-                <select name="mixer2-quantity">
-                    <option value="unselected" selected>未選択</option>
-                    <option value="1/8">1/8</option>
-                    <option value="30mL">30mL</option>
-                    <option value="45mL">45mL</option>
-                    <option value="60mL">60mL</option>
-                    <option value="full up">full up</option>
-                </select>
+                <span>署名</span>
+                <input id="signature" type="text">
             </label>
             <label>
                 <button @click="resister()" type="button" class="resister-btn">登録</button>
@@ -77,38 +21,96 @@
 </template>
 
 <script>
+
+    import BaseAddition from "../components/BaseAddition.vue";
+    import AlcoholAddition from "../components/AlcoholAddition.vue";
+    import MixerAddition from "../components/MixerAddition.vue";
+    
     export default {
+        components: {
+            BaseAddition,
+            AlcoholAddition,
+            MixerAddition,
+        },
         data() {
             return{
                 newCocktail: {
                     cocktailName: "",
                     baseName: "",
                     baseQuantity: 0,
+                    alcoholName: "",
+                    alcoholQuantity: 0,
                     mixerName: "",
                     mixerQuantity: 0,
-                    mixer2Name: "",
-                    mixer2Quantity: 0,
+                    signature:"anonymous",
                     mainDetail: false,
+                    showAlcohol: false,
                     showMixer: false,
-                    showMixer2: false,
                 },
             };
         },
         methods: {
-            // 登録用ボタン
-            resister() {
-                
-                //追加するカクテルのオブジェクト登録
-                this.newCocktail.cocktailName = document.getElementById("cocktailName").value;
-                this.newCocktail.baseName = document.querySelector('[name="base-name"]').value;
-                this.newCocktail.baseQuantity = document.querySelector('[name="base-quantity"]').value;
-                this.newCocktail.mixerName = document.querySelector('[name="mixer-name"]').value;
-                this.newCocktail.mixerQuantity = document.querySelector('[name="mixer-quantity"]').value;
-                this.newCocktail.mixer2Name = document.querySelector('[name="mixer2-name"]').value;
-                this.newCocktail.mixer2Quantity = document.querySelector('[name="mixer2-quantity"]').value;
 
-                // カクテル名が空欄でなければ登録
+        // resister the new cocktail's object
+            resister() {
+            
+            // resister a cocktail name
+                this.newCocktail.cocktailName = document.getElementById("cocktailName").value;
+                
+            // resister base information  
+             
+                // resister base name
+                if(document.querySelector('[name="base-name"]').value == "liqueur - ") {
+                    this.newCocktail.baseName = document.querySelector('[name="base-liqueur"]').value;
+                }else if(document.querySelector('[name="base-name"]').value == "wine - "){
+                    this.newCocktail.baseName = document.querySelector('[name="base-wine"]').value;
+                }else{
+                    this.newCocktail.baseName = document.querySelector('[name="base-name"]').value;
+                }
+
+                // resister base quantity
+                if(document.querySelector('[name="base-quantity"]').value == "other"){
+                    this.newCocktail.baseQuantity = document.getElementById("base-quantity").value;
+                }else{
+                    this.newCocktail.baseQuantity = document.querySelector('[name="base-quantity"]').value;
+                }
+                
+            // resister another alcohol information
+                
+                // resister another alcohol name
+                if(document.querySelector('[name="alcohol-name"]').value == "liqueur - ") {
+                    this.newCocktail.alcoholName = document.querySelector('[name="alc-liqueur"]').value;
+                }else if(document.querySelector('[name="alcohol-name"]').value == "wine - "){
+                    this.newCocktail.alcoholName = document.querySelector('[name="alc-wine"]').value;
+                }else{
+                    this.newCocktail.alcoholName = document.querySelector('[name="alcohol-name"]').value;
+                }
+
+                // resister another alcohol name
+                if(document.querySelector('[name="alcohol-quantity"]').value == "other"){
+                    this.newCocktail.alcoholQuantity = document.getElementById("alcohol-quantity").value;
+                }else{
+                    this.newCocktail.alcoholQuantity = document.querySelector('[name="alcohol-quantity"]').value;
+                }
+
+            // resister mixer information
+                
+                // resister mixer name
+                this.newCocktail.mixerName = document.querySelector('[name="mixer-name"]').value;
+
+                // resister mixer quantity
+                if(document.querySelector('[name="mixer-quantity"]').value == "other"){
+                    this.newCocktail.mixerQuantity = document.getElementById("mixer-quantity").value;
+                }else{
+                    this.newCocktail.mixerQuantity = document.querySelector('[name="mixer-quantity"]').value;
+                }
+
+            // resister signature
+                this.newCocktail.signature = document.getElementById("signature").value;
+
+            // resister cocktail when the cocktail name is not empty
                 this.$store.commit("cocktailResister", this.newCocktail);
+                console.log(this.newCocktail.signature);
             },
         },
     };
@@ -163,6 +165,9 @@
     }
     #name{
         width: 250px;
+    }
+    .hide-input{
+        width: 50px;
     }
     .resister-btn{
         margin: 0;

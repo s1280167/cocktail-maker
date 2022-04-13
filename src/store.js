@@ -14,7 +14,6 @@ export default new Vuex.Store({ // vuexで定義するdata
             if(newCocktail.cocktailName != "") {
                 // store.jsの配列にオブジェクトを追加
                 state.cocktailStore.push(newCocktail);
-                console.log(state.cocktailStore);
             }
         },
         removeCocktail(state, selected) { // カクテルの削除
