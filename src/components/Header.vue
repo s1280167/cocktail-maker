@@ -3,7 +3,7 @@
     <header class="wrapper">        
         <nav>
             <ul class="page-header">
-                <li><h1 class="header-title"><router-link class="header-router" to="/top">{{'Cocktail Maker'}}</router-link></h1></li>
+                <li><h1 class="header-title"><router-link class="header-router" to="/">{{'Cocktail Maker'}}</router-link></h1></li>
                 <div class="header-nav">
                     <li><router-link class="header-router nav-size" to="/addition">{{'Addition'}}</router-link></li>
                     <li><router-link class="header-router nav-size" to="/test">{{'Test'}}</router-link></li>
