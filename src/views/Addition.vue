@@ -9,6 +9,8 @@
             <BaseAddition />
             <AlcoholAddition />
             <MixerAddition />
+            <Mixer2 />
+            <Mixer3 />
             <label>
                 <span>署名</span>
                 <input id="signature" type="text">
@@ -25,28 +27,20 @@
     import BaseAddition from "../components/BaseAddition.vue";
     import AlcoholAddition from "../components/AlcoholAddition.vue";
     import MixerAddition from "../components/MixerAddition.vue";
+    import Mixer2 from "../components/Mixer2.vue"
+    import Mixer3 from"../components/Mixer3.vue"
     
     export default {
         components: {
             BaseAddition,
             AlcoholAddition,
             MixerAddition,
+            Mixer2,
+            Mixer3,
         },
         data() {
             return{
-                newCocktail: {
-                    cocktailName: "",
-                    baseName: "",
-                    baseQuantity: 0,
-                    alcoholName: "",
-                    alcoholQuantity: 0,
-                    mixerName: "",
-                    mixerQuantity: 0,
-                    signature:"anonymous",
-                    mainDetail: false,
-                    showAlcohol: false,
-                    showMixer: false,
-                },
+                
             };
         },
         methods: {
@@ -55,62 +49,91 @@
             resister() {
             
             // resister a cocktail name
-                this.newCocktail.cocktailName = document.getElementById("cocktailName").value;
-                
+                this.$store.state.newCocktail.cocktailName = document.getElementById("cocktailName").value;
+                console.log(this.$store.state.newCocktail.cocktailName);
             // resister base information  
              
                 // resister base name
                 if(document.querySelector('[name="base-name"]').value == "liqueur - ") {
-                    this.newCocktail.baseName = document.querySelector('[name="base-liqueur"]').value;
+                    this.$store.state.newCocktail.baseName = document.querySelector('[name="base-liqueur"]').value;
                 }else if(document.querySelector('[name="base-name"]').value == "wine - "){
-                    this.newCocktail.baseName = document.querySelector('[name="base-wine"]').value;
+                    this.$store.state.newCocktail.baseName = document.querySelector('[name="base-wine"]').value;
                 }else{
-                    this.newCocktail.baseName = document.querySelector('[name="base-name"]').value;
+                    this.$store.state.newCocktail.baseName = document.querySelector('[name="base-name"]').value;
                 }
+                console.log(this.$store.state.newCocktail.baseName);
 
                 // resister base quantity
                 if(document.querySelector('[name="base-quantity"]').value == "other"){
-                    this.newCocktail.baseQuantity = document.getElementById("base-quantity").value;
+                    this.$store.state.newCocktail.baseQuantity = document.getElementById("base-quantity").value;
                 }else{
-                    this.newCocktail.baseQuantity = document.querySelector('[name="base-quantity"]').value;
+                    this.$store.state.newCocktail.baseQuantity = document.querySelector('[name="base-quantity"]').value;
                 }
-                
+                console.log(this.$store.state.newCocktail.baseQuantity);
+
             // resister another alcohol information
                 
                 // resister another alcohol name
                 if(document.querySelector('[name="alcohol-name"]').value == "liqueur - ") {
-                    this.newCocktail.alcoholName = document.querySelector('[name="alc-liqueur"]').value;
+                    this.$store.state.newCocktail.alcoholName = document.querySelector('[name="alc-liqueur"]').value;
                 }else if(document.querySelector('[name="alcohol-name"]').value == "wine - "){
-                    this.newCocktail.alcoholName = document.querySelector('[name="alc-wine"]').value;
+                    this.$store.state.newCocktail.alcoholName = document.querySelector('[name="alc-wine"]').value;
                 }else{
-                    this.newCocktail.alcoholName = document.querySelector('[name="alcohol-name"]').value;
+                    this.$store.state.newCocktail.alcoholName = document.querySelector('[name="alcohol-name"]').value;
                 }
 
-                // resister another alcohol name
+                // resister another alcohol quantity
                 if(document.querySelector('[name="alcohol-quantity"]').value == "other"){
-                    this.newCocktail.alcoholQuantity = document.getElementById("alcohol-quantity").value;
+                    this.$store.state.newCocktail.alcoholQuantity = document.getElementById("alcohol-quantity").value;
                 }else{
-                    this.newCocktail.alcoholQuantity = document.querySelector('[name="alcohol-quantity"]').value;
+                    this.$store.state.newCocktail.alcoholQuantity = document.querySelector('[name="alcohol-quantity"]').value;
                 }
 
             // resister mixer information
-                
+
                 // resister mixer name
-                this.newCocktail.mixerName = document.querySelector('[name="mixer-name"]').value;
+                this.$store.state.newCocktail.mixerName = document.querySelector('[name="mixer-name"]').value;
+                console.log(this.$store.state.newCocktail.mixerName);
 
                 // resister mixer quantity
                 if(document.querySelector('[name="mixer-quantity"]').value == "other"){
-                    this.newCocktail.mixerQuantity = document.getElementById("mixer-quantity").value;
+                    this.$store.state.newCocktail.mixerQuantity = document.getElementById("mixer-quantity").value;
                 }else{
-                    this.newCocktail.mixerQuantity = document.querySelector('[name="mixer-quantity"]').value;
+                    this.$store.state.newCocktail.mixerQuantity = document.querySelector('[name="mixer-quantity"]').value;
+                }
+                console.log(this.$store.state.newCocktail.mixerQuantity);
+
+            // resister mixer2 information
+                
+                // resister mixer2 name
+                this.$store.state.newCocktail.mixer2Name = document.querySelector('[name="mixer2-name"]').value;
+
+                // resister mixer2 quantity
+                if(document.querySelector('[name="mixer2-quantity"]').value == "other"){
+                    this.$store.state.newCocktail.mixer2Quantity = document.getElementById("mixer2-quantity").value;
+                }else{
+                    this.$store.state.newCocktail.mixer2Quantity = document.querySelector('[name="mixer2-quantity"]').value;
+                }
+
+            // resister mixer3 information
+                
+                // resister mixer3 name
+                this.$store.state.newCocktail.mixer3Name = document.querySelector('[name="mixer3-name"]').value;
+
+                // resister mixer3 quantity
+                if(document.querySelector('[name="mixer3-quantity"]').value == "other"){
+                    this.$store.state.newCocktail.mixer3Quantity = document.getElementById("mixer3-quantity").value;
+                }else{
+                    this.$store.state.newCocktail.mixer3Quantity = document.querySelector('[name="mixer3-quantity"]').value;
                 }
 
             // resister signature
-                this.newCocktail.signature = document.getElementById("signature").value;
+                this.$store.state.newCocktail.signature = document.getElementById("signature").value;
+                console.log(this.$store.state.newCocktail.signature);
 
             // resister cocktail when the cocktail name is not empty
-                this.$store.commit("cocktailResister", this.newCocktail);
-                console.log(this.newCocktail.signature);
+                this.$store.commit("cocktailResister", this.$store.state.newCocktail);
+                console.log(this.$store.state.newCocktail);
             },
         },
     };
@@ -120,8 +143,7 @@
     #addition{
         position: relative;
         top: 0;
-        min-height: 81.75vh;
-        height: 100%;
+        min-height: 81.75vh;        
         padding: 10% 25% 0;
         background-image: linear-gradient(#e6f0f0, #7fd9d2, #ff9ed6);
         background-size: cover;

@@ -1,7 +1,7 @@
 <template>
-    <label>
+    <label v-show="this.$store.state.showInput.mixer2">
         <span>割り材</span>
-        <select name="mixer-name" @change="changeShowMixer2()">
+        <select name="mixer2-name" @change="changeShowMixer3()">
             <option value="unselected" selected>未選択</option>
             <option value="milk - ">牛乳</option>
             <option value="soda - ">炭酸水</option>
@@ -12,7 +12,7 @@
             <option value="apple - ">アップルジュース</option>
             <option value="pine - ">パイナップルジュース</option>
         </select>
-        <select name="mixer-quantity" @change="showMoreQuantity(); changeShowMixer2()">
+        <select name="mixer2-quantity" @change="showMoreQuantity(); changeShowMixer3()">
             <option value="unselected" selected>未選択</option>
             <option value="30mL">30mL</option>
             <option value="45mL">45mL</option>
@@ -20,7 +20,7 @@
             <option value="full up">full up</option>
             <option value="other">その他</option>
         </select>
-        <input id="mixer-quantity" v-show="moreQuantity" class="hide-input" type="text" required>
+        <input id="mixer2-quantity" v-show="moreQuantity" class="hide-input" type="text" required>
     </label>
 </template>
 
@@ -33,18 +33,17 @@ export default {
     },
     methods: {
         showMoreQuantity() {
-            if(document.querySelector('[name="mixer-quantity"]').value == "other") {
+            if(document.querySelector('[name="mixer2-quantity"]').value == "other") {
                 this.moreQuantity = true;
             }else{
                 this.moreQuantity = false;
             }
         },
-        changeShowMixer2(){
-            console.log(document.querySelector('[name="mixer-name"]').value);
-            if(document.querySelector('[name="mixer-name"]').value != "unselected" && document.querySelector('[name="mixer-quantity"]').value != "unselected") {
-               this.$store.state.showInput.mixer2 = true;
+        changeShowMixer3(){
+            if(document.querySelector('[name="mixer2-name"]').value != "unselected" && document.querySelector('[name="mixer2-quantity"]').value != "unselected") {
+               this.$store.state.showInput.mixer3 = true;
             }else{
-                this.$store.state.showInput.mixer2 = false;
+                this.$store.state.showInput.mixer3 = false;
             }
         },
     },

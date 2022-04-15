@@ -2,9 +2,6 @@
 <template>
     <div id="test">
         <div>
-            <!-- <transition name="fadeTitle" @after-enter="changeShow()" appear> 
-                <h1 v-show="showTitle" class="main-title">Cocktail Maker</h1>
-             </transition> -->
             <div class="top-routers">
                 <router-link class="top-router top-router1" to="/addition">{{'登録'}}</router-link>
                 <router-link class="top-router" to="/addition">{{'登録'}}</router-link>
@@ -37,7 +34,7 @@
     #test{
         position: relative;
         top: 0;
-        height: 81.75vh;
+        min-height: 81.75vh;
         padding: 10% 25% 0;
         background-image: linear-gradient(#e6f0f0, #a1f4ff, #7c539d);
         background-size: cover;
@@ -45,6 +42,7 @@
     .top-routers{
         height: 100%;
         width: 100%;
+        margin-top: 200px;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr; /* 幅3等分 */
         grid-template-rows: 1fr 1fr 1fr;

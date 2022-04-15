@@ -1,7 +1,7 @@
 <template>
     <label>
         <span>アルコール（ベース）</span>
-        <select name="base-name" @change="showBase()">
+        <select name="base-name" @change="showBase(); changeShowAlcohol()">
             <option value="non-alcohol" selected>未選択</option>
             <option value="gin - ">ジン</option>
             <option value="rum - ">ラム</option>
@@ -25,7 +25,7 @@
             <option value="unselected" selected>未選択</option>
             <option value="vermouth - ">ベルモット</option>
         </select>
-        <select name="base-quantity" @change="showMoreQuantity()">
+        <select name="base-quantity" @change="showMoreQuantity(); changeShowAlcohol()">
             <option value="unselected" selected>未選択</option>
             <option value="30mL">30mL</option>
             <option value="45mL">45mL</option>
@@ -71,12 +71,13 @@
                     this.moreQuantity = false;
                 }
             },
-            resisterBase() {
-                this.newCocktail.baseName = document.querySelector('[name="base-name"]').value;                
-                if(document.querySelector('[name="base-quantity"]').value == "other"){
-                    this.newCocktail.baseQuantity = document.getElementById("base-quantity").value;
+
+            changeShowAlcohol(){
+                console.log(document.querySelector('[name="base-name"]').value);
+                if(document.querySelector('[name="base-name"]').value != "non-alcohol" && document.querySelector('[name="base-quantity"]').value != "unselected") {
+                   this.$store.state.showInput.alcohol = true;
                 }else{
-                    this.newCocktail.baseQuantity = document.querySelector('[name="base-quantity"]').value;
+                    this.$store.state.showInput.alcohol = false;
                 }
             }
         },
