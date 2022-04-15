@@ -1,8 +1,8 @@
 <template>
-    <label>
+    <label v-show="this.$store.state.showInput.alcohol">
         <span>アルコール</span>
-        <select name="alcohol-name" @change="showBase()">
-            <option value="non-alcohol" selected>未選択</option>
+        <select name="alcohol-name" @change="showAlcohol()">
+            <option value="unselected" selected>未選択</option>
             <option value="gin - ">ジン</option>
             <option value="rum - ">ラム</option>
             <option value="beer - ">ビール</option>
@@ -32,7 +32,7 @@
             <option value="other">その他</option>
         </select>
         <input id="alcohol-quantity" v-show="moreQuantity" class="hide-input" type="text" required>
-    </label>    
+    </label>
 </template>
 
 <script>
@@ -59,7 +59,7 @@
                     this.wine = false;
                 }
             },
-            showBase() {
+            showAlcohol() {
                 this.showLiqueur();
                 this.showWine();
             },
