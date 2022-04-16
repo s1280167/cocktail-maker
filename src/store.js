@@ -6,7 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({ // vuexで定義するdata
     state: {
-        cocktailStore: [], // 登録したカクテルのリスト 
+        cocktailStore: [], // 登録したカクテルのリスト
         newCocktail: {
             cocktailName: "",
             baseName: "",
@@ -30,15 +30,13 @@ export default new Vuex.Store({ // vuexで定義するdata
             alcohol: false,
             mixer2: false,
             mixer3: false,
-
-        }        
+        },
     },
     getters: {}, // vuexで定義するcomputed
     mutations: { // stateの値をいじるときはここに全て記述する
         cocktailResister(state, newCocktail) {
             if(newCocktail.cocktailName != "") {
-                // store.jsの配列にオブジェクトを追加
-                state.cocktailStore.push(newCocktail);
+                state.cocktailStore.push(newCocktail);                
             }
         },
         removeCocktail(state, selected) { // カクテルの削除
@@ -48,7 +46,7 @@ export default new Vuex.Store({ // vuexで定義するdata
     actions: {}, 
     plugins: [createPersistedState({
         key: 'myApp',
-        path: ['cocktailStore'],
+        paths: ['cocktailStore'],
         storage: window.localStorage,
     })],
 });

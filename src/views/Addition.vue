@@ -81,6 +81,7 @@
                 }else{
                     this.$store.state.newCocktail.alcoholName = document.querySelector('[name="alcohol-name"]').value;
                 }
+                console.log(this.$store.state.newCocktail.alcoholName);
 
                 // resister another alcohol quantity
                 if(document.querySelector('[name="alcohol-quantity"]').value == "other"){
@@ -88,6 +89,7 @@
                 }else{
                     this.$store.state.newCocktail.alcoholQuantity = document.querySelector('[name="alcohol-quantity"]').value;
                 }
+                console.log(this.$store.state.newCocktail.alcoholQuantity);
 
             // resister mixer information
 
@@ -107,6 +109,7 @@
                 
                 // resister mixer2 name
                 this.$store.state.newCocktail.mixer2Name = document.querySelector('[name="mixer2-name"]').value;
+                console.log(this.$store.state.newCocktail.mixer2Name);
 
                 // resister mixer2 quantity
                 if(document.querySelector('[name="mixer2-quantity"]').value == "other"){
@@ -114,11 +117,13 @@
                 }else{
                     this.$store.state.newCocktail.mixer2Quantity = document.querySelector('[name="mixer2-quantity"]').value;
                 }
+                console.log(this.$store.state.newCocktail.mixer2Quantity);
 
             // resister mixer3 information
                 
                 // resister mixer3 name
                 this.$store.state.newCocktail.mixer3Name = document.querySelector('[name="mixer3-name"]').value;
+                console.log(this.$store.state.newCocktail.mixer3Name);
 
                 // resister mixer3 quantity
                 if(document.querySelector('[name="mixer3-quantity"]').value == "other"){
@@ -126,9 +131,12 @@
                 }else{
                     this.$store.state.newCocktail.mixer3Quantity = document.querySelector('[name="mixer3-quantity"]').value;
                 }
+                console.log(this.$store.state.newCocktail.mixer3Quantity);
 
             // resister signature
-                this.$store.state.newCocktail.signature = document.getElementById("signature").value;
+                if(document.getElementById("signature").value != "") {
+                    this.$store.state.newCocktail.signature = document.getElementById("signature").value;
+                }
                 console.log(this.$store.state.newCocktail.signature);
 
             // resister cocktail when the cocktail name is not empty
