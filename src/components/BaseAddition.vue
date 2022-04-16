@@ -73,7 +73,6 @@
             },
 
             changeShowAlcohol(){
-                console.log(document.querySelector('[name="base-name"]').value);
                 if(document.querySelector('[name="base-name"]').value != "non-alcohol" && document.querySelector('[name="base-quantity"]').value != "unselected") {
                    this.$store.state.showInput.alcohol = true;
                 }else{
